@@ -1,0 +1,21 @@
+#
+# These things are run when an Openbox X Session is started.
+# You may place a similar script in $HOME/.config/openbox/autostart
+# to run user-specific things.
+#
+
+tint2 & #panel
+
+nitrogen --restore & #restore previous background
+
+lxpolkit & #polkit (password popup)
+
+clipit & #a tray clipboard manager
+
+compton & #the compositor
+
+xautolock -time 15 -locker "~/.xlock/lock2.sh" -notify 30 -notifier "notify-send -u critical -t 10000 -- 'Locking screen in 30 seconds'" &
+ # Locks the screen after 30 mins
+
+
+
