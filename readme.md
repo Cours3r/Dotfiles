@@ -23,6 +23,7 @@ termite - config file for termite terminal emulator
 zsh - my custom zsh prompt & .zshrc
 
 -> location: .zshrc -> ~/
+
 .             theme -> ~/.oh-my-zsh/custom/themes/
 
 
