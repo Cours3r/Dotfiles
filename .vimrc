@@ -1,6 +1,6 @@
 " My basic .vimrc
 set nocompatible
-filetype indent plugin on
+filetype plugin indent on
 syntax on
 set hidden
 set wildmenu
@@ -12,11 +12,15 @@ set backspace=indent,eol,start
 set autoindent
 set nostartofline
 set ruler
-set laststaus=2
 set mouse=a
 set number
-set shiftwidth=4
+set tabstop=4
 set softtabstop=4
-set expandtab
-
+set shiftwidth=4
+set noexpandtab
+set number
+set termguicolors " Enable true color support.
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+autocmd FileType * set noexpandtab
 
