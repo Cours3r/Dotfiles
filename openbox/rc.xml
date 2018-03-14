@@ -302,12 +302,17 @@
     </keybind>
     <keybind key="W-t">
       <action name="Execute">
-        <command>termite</command>
+        <command>st</command>
       </action>
     </keybind>
     <keybind key="W-a">
       <action name="Execute">
         <command>kate</command>
+      </action>
+    </keybind>
+    <keybind key="W-C-a">
+      <action name="Execute">
+        <command>atom</command>
       </action>
     </keybind>
     <keybind key="W-r">
@@ -880,7 +885,7 @@
     <!-- controls if icons appear in the client-list-(combined-)menu -->
     <manageDesktops>yes</manageDesktops>
     <!-- show the manage desktops section in the client-list-(combined-)menu -->
-  </menu>
-  <applications>
+	</menu>
+	<applications>
 	</applications>
 </openbox_config>
