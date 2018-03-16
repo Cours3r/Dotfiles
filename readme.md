@@ -31,4 +31,8 @@ zsh - my custom zsh prompt & .zshrc
 
 * dlcgold - used his FullMetalArch config
 
+### TODO
+
+* Get a good (stable) st config.h and pkgbuild going
+
 
