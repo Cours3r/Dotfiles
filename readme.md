@@ -26,6 +26,9 @@ zsh - my custom zsh prompt & .zshrc
 
 .             theme -> ~/.oh-my-zsh/custom/themes/
 
+tint2 - task bar from tint2
+
+-> location: ~/.config/tint2/
 
 ## Acknowledgments
 
