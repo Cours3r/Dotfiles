@@ -40,7 +40,7 @@
 						'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>Surreal</name>
+    <name>modern-grey</name>
     <titleLayout>LIMC</titleLayout>
     <!--
 		available characters are NDSLIMC, each can occur at most once.
@@ -58,8 +58,8 @@
     <keepBorder>yes</keepBorder>
     <animateIconify>yes</animateIconify>
     <font place="ActiveWindow">
-      <name>Noto Sans</name>
-      <size>8</size>
+      <name>Hack</name>
+      <size>6</size>
       <!-- font size in points -->
       <weight>Normal</weight>
       <!-- 'bold' or 'normal' -->
@@ -67,8 +67,8 @@
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="InactiveWindow">
-      <name>Noto Sans</name>
-      <size>8</size>
+      <name>Hack</name>
+      <size>6</size>
       <!-- font size in points -->
       <weight>Normal</weight>
       <!-- 'bold' or 'normal' -->
@@ -76,8 +76,8 @@
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="MenuHeader">
-      <name>Roboto</name>
-      <size>8</size>
+      <name>Hack</name>
+      <size>7</size>
       <!-- font size in points -->
       <weight>Normal</weight>
       <!-- 'bold' or 'normal' -->
@@ -85,8 +85,8 @@
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="MenuItem">
-      <name>Roboto</name>
-      <size>8</size>
+      <name>Hack</name>
+      <size>7</size>
       <!-- font size in points -->
       <weight>Normal</weight>
       <!-- 'bold' or 'normal' -->
@@ -94,8 +94,8 @@
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="ActiveOnScreenDisplay">
-      <name>Noto Sans</name>
-      <size>8</size>
+      <name>Hack</name>
+      <size>7</size>
       <!-- font size in points -->
       <weight>Normal</weight>
       <!-- 'bold' or 'normal' -->
@@ -103,8 +103,8 @@
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="InactiveOnScreenDisplay">
-      <name>Noto Sans</name>
-      <size>8</size>
+      <name>Hack</name>
+      <size>7</size>
       <!-- font size in points -->
       <weight>Normal</weight>
       <!-- 'bold' or 'normal' -->
@@ -190,6 +190,11 @@
         <command>openbox --reconfigure</command>
       </action>
     </keybind>
+    <keybind key="A-C-Delete">
+      <action name="Execute">
+        <command>oblogout</command>
+      </action>
+    </keybind>
     <keybind key="C-A-Right">
       <action name="DesktopRight"/>
     </keybind>
@@ -217,17 +222,88 @@
     <keybind key="A-S-Tab">
       <action name="PreviousWindow"/>
     </keybind>
-    <keybind key="W-S-Right">
-      <action name="DirectionalCycleWindows"/>
+    <keybind key="W-l">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <x>-0</x>
+        <y>0</y>
+        <width>50%</width>
+        <height>100%</height>
+      </action>
     </keybind>
-    <keybind key="W-S-Left">
-      <action name="DirectionalCycleWindows"/>
+    <keybind key="W-h">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <x>0</x>
+        <y>0</y>
+        <width>50%</width>
+        <height>100%</height>
+      </action>
     </keybind>
-    <keybind key="W-S-Up">
-      <action name="DirectionalCycleWindows"/>
+    <keybind key="W-j">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <x>0</x>
+        <y>0</y>
+        <width>100%</width>
+        <height>50%</height>
+      </action>
     </keybind>
-    <keybind key="W-S-Down">
-      <action name="DirectionalCycleWindows"/>
+    <keybind key="W-k">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <x>0</x>
+        <y>-0</y>
+        <width>100%</width>
+        <height>50%</height>
+      </action>
+    </keybind>
+    <keybind key="W-C-h">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <x>0</x>
+        <y>0</y>
+        <width>50%</width>
+        <height>50%</height>
+      </action>
+    </keybind>
+    <keybind key="W-A-h">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <x>0</x>
+        <y>-0</y>
+        <width>50%</width>
+        <height>50%</height>
+      </action>
+    </keybind>
+    <keybind key="W-C-l">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <x>-0</x>
+        <y>0</y>
+        <width>50%</width>
+        <height>50%</height>
+      </action>
+    </keybind>
+    <keybind key="W-A-l">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <x>-0</x>
+        <y>-0</y>
+        <width>50%</width>
+        <height>50%</height>
+      </action>
+    </keybind>
+    <keybind key="W-n">
+      <action name="MaximizeFull"/>
+    </keybind>
+    <keybind key="W-m">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <width>80%</width>
+        <height>80%</height>
+      </action>
+      <action name="MoveToCenter"/>
     </keybind>
     <keybind key="S-A-h">
       <action name="SendToDesktopLeft"/>
@@ -240,6 +316,18 @@
     </keybind>
     <keybind key="S-A-j">
       <action name="SendToDesktopDown"/>
+    </keybind>
+    <keybind key="W-S-Right">
+      <action name="DirectionalCycleWindows"/>
+    </keybind>
+    <keybind key="W-S-Left">
+      <action name="DirectionalCycleWindows"/>
+    </keybind>
+    <keybind key="W-S-Up">
+      <action name="DirectionalCycleWindows"/>
+    </keybind>
+    <keybind key="W-S-Down">
+      <action name="DirectionalCycleWindows"/>
     </keybind>
     <keybind key="A-Escape">
       <action name="Lower"/>
@@ -290,12 +378,17 @@
     <keybind key="W-d">
       <action name="ToggleShowDesktop"/>
     </keybind>
-    <keybind key="W-e">
+    <keybind key="C-A-e">
       <action name="Execute">
         <command>thunar</command>
       </action>
     </keybind>
-    <keybind key="W-b">
+    <keybind key="W-e">
+      <action name="Execute">
+        <command>st -e ranger</command>
+      </action>
+    </keybind>
+	<keybind key="W-b">
       <action name="Execute">
         <command>firefox</command>
       </action>
@@ -303,6 +396,11 @@
     <keybind key="W-t">
       <action name="Execute">
         <command>st</command>
+      </action>
+    </keybind>
+    <keybind key="C-A-t">
+      <action name="Execute">
+        <command>st -e htop</command>
       </action>
     </keybind>
     <keybind key="W-a">
@@ -360,36 +458,6 @@
         <menu>root-menu</menu>
       </action>
     </keybind>
-    <keybind key="W-l">
-      <action name="UnmaximizeFull"/>
-      <action name="MaximizeVert"/>
-      <action name="MoveResizeTo">
-        <width>50%</width>
-      </action>
-      <action name="MoveToEdgeEast"/>
-    </keybind>
-    <keybind key="W-h">
-      <action name="UnmaximizeFull"/>
-      <action name="MaximizeVert"/>
-      <action name="MoveResizeTo">
-        <width>50%</width>
-      </action>
-      <action name="MoveToEdgeWest"/>
-    </keybind>
-    <keybind key="W-j">
-      <action name="MaximizeFull"/>
-    </keybind>
-    <keybind key="W-n">
-      <action name="MaximizeFull"/>
-    </keybind>
-    <keybind key="W-k">
-      <action name="UnmaximizeFull"/>
-      <action name="MoveResizeTo">
-        <width>80%</width>
-        <height>80%</height>
-      </action>
-      <action name="MoveToCenter"/>
-    </keybind>
     <keybind key="W-A-Left">
       <action name="UnmaximizeFull"/>
       <action name="MaximizeVert"/>
@@ -414,7 +482,7 @@
     <keybind key="A-m">
       <action name="Move"/>
     </keybind>
-    <keybind key="S-W-q">
+    <keybind key="W-q">
       <action name="Close"/>
     </keybind>
     <keybind key="W-F1">
@@ -467,6 +535,11 @@
     <keybind key="W-s">
       <action name="Execute">
         <command>spotify</command>
+      </action>
+    </keybind>
+    <keybind key="W-i">
+      <action name="Execute">
+        <command>pavucontrol</command>
       </action>
     </keybind>
     <keybind key="W-v">
@@ -885,7 +958,7 @@
     <!-- controls if icons appear in the client-list-(combined-)menu -->
     <manageDesktops>yes</manageDesktops>
     <!-- show the manage desktops section in the client-list-(combined-)menu -->
-	</menu>
-	<applications>
+  </menu>
+  <applications>
 	</applications>
 </openbox_config>
