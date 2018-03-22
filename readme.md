@@ -30,7 +30,11 @@ tint2 - task bar from tint2
 
 -> location: ~/.config/tint2/
 
-## Acknowledgments
+### Bugs/Issues:
+
+* Lock screen image doesn't scale, on a larger monitor it will require a manual resize
+
+### Acknowledgments
 
 * dlcgold - used his FullMetalArch config
 
