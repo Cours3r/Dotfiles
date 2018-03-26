@@ -14,7 +14,7 @@ clipit & #a tray clipboard manager
 
 compton & #the compositor
 
-xautolock -time 15 -locker "~/.xlock/lock2.sh" -notify 30 -notifier "notify-send -u critical -t 10000 -- 'Locking screen in 30 seconds'" &
+#xautolock -time 15 -locker "~/.xlock/lock2.sh" -notify 30 -notifier "notify-send -u critical -t 10000 -- 'Locking screen in 30 seconds'" &
  # Locks the screen after 30 mins
 
 
