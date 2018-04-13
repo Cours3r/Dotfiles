@@ -4,13 +4,17 @@ This repository if my collection of dotfiles for running arch and openbox. The m
 
 ### Included
 
+i3 - config file for i3-gaps
+
+-> location: ~/.config/i3/
+
+lockscreen - lock2.sh and icon, used to lock screen in openbox and i3-gaps
+
+-> location: ~/.xlock/
+
 Mouse - libinput config for touchpad on laptop
 
 location -> /etc/X11/xorg.conf.d 
-
-lockscreen - lock2.sh and icon, used to lock screen in openbox
-
--> location: ~/.xlock/
 
 openbox - my openbox config files (rc.xml, autostart, enviorment, menu.xml)
 
@@ -20,15 +24,15 @@ termite - config file for termite terminal emulator
 
 -> location: ~/.config/termite/
 
+tint2 - task bar from tint2
+
+-> location: ~/.config/tint2/
+
 zsh - my custom zsh prompt & .zshrc
 
 -> location: .zshrc -> ~/
 
 .             theme -> ~/.oh-my-zsh/custom/themes/
-
-tint2 - task bar from tint2
-
--> location: ~/.config/tint2/
 
 ### Bugs/Issues:
 
@@ -36,10 +40,7 @@ tint2 - task bar from tint2
 
 ### Acknowledgments
 
-* dlcgold - used his FullMetalArch config
+* dlcgold - used his FullMetalArch config to get a starting point with openbox
 
-### TODO
-
-* Get a good (stable) st config.h and pkgbuild going
 
 
