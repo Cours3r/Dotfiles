@@ -20,16 +20,16 @@
 #Default Modifier
 set $mod Mod4
 #Default Terminal Emulator
-set $editor st
+set $editor alacritty
 #Font
-font ttf:Hack 8
+font ttf:Dajavu Monospace
 #Floating Modifier
 floating_modifier $mod
 
 #pactl Audio controls
 bindsym	XF86AudioRaiseVolume	exec pactl set-sink-volume 0 +5%
 bindsym	XF86AudioLowerVolume	exec pactl set-sink-volume 0 -5%
-bindsym	XF86AudioMute			exec --no-startup-id pactl set-sink-mute 0 toggle
+bindsym	XF86AudioMute			exec --no-startup-id pactl set-sink-mute 0 toggle; exec pactl set-sink-volume 0 20%
 
 bindsym XF86AudioPlay			exec --no-startup-id playerctl play-pause
 bindsym XF86AudioNext			exec --no-startup-id playerctl next
@@ -40,15 +40,15 @@ bindsym XF86MonBrightnessUp 	exec xbacklight +10
 bindsym XF86MonBrightnessDown 	exec xbacklight -10
 
 #Keybinds
-bindsym $mod+t						exec st
-bindsym $mod+Shift+i				exec st
+bindsym $mod+t						exec $editor
+bindsym $mod+Shift+i				exec $editor
 bindsym $mod+b						exec qutebrowser
 bindsym $mod+Shift+b				exec firefox
-bindsym $mod+e						exec st -e ranger
+bindsym $mod+e						exec $editor -e ranger
 bindsym $mod+shift+F2				exec thunar
-bindsym $mod+a						exec kate
+bindsym $mod+a						exec atom
 bindsym $mod+shift+x				exec ~/.xlock/lock2.sh
-bindsym Shift+XF86Eject				exec st -e scrot
+bindsym Shift+XF86Eject				exec $editor -e scrot
 bindsym Shift+F4 exec pkill bash
 #þKill Focused Window
 bindsym $mod+Shift+q kill
