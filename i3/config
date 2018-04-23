@@ -20,7 +20,7 @@
 #Default Modifier
 set $mod Mod4
 #Default Terminal Emulator
-set $editor alacritty
+set $editor urxvt
 #Font
 font ttf:Dajavu Monospace
 #Floating Modifier
@@ -60,55 +60,8 @@ bindsym $mod+Shift+r restart
 #Exit i3 (logs you out of your X session)
 bindsym $mod+0 exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-#							BORDER				BACKGROUND		TEXT
-client.focused				#9b703f				#686666			#ffffff			#FF0000
-client.focused_inactive		#242424 			#000000			#A48E6D 		#FD9D0D
-client.unfocused			#242424 			#000000 		#A48E6D 		#FD9D0D
-client.urgent				#ff8000 			#ff4300 		#ff0000 		#900000
-
-#Gaps and Borders
-gaps inner 8
-gaps outer 0
-bindsym $mod+g mode "$mode_gaps"
-mode "$mode_gaps" {
-    bindsym $mod+j  gaps outer all plus 5
-    bindsym $mod+k gaps outer all minus 5
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-
-#Autostart
-exec --no-startup-id compton -f
-#exec xautolock -locker i3lock-fancy
-#exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd
-exec --no-startup-id redshift-gtk
-exec --no-startup-id caffeine
-exec --no-startup-id clipit
-exec --no-startup-id nitrogen --restore
-
-#Bar
-bar {
-    colors {
-        # Whole color settings
-        background #1e1e1e
-        statusline #ffffff
-        separator  #1e1e1e
-
-        # Type             border  background font
-        focused_workspace  #1e1e1e #1e1e1e #c90e0e
-        active_workspace   #1e1e1e #222222 #cf6a4c
-        inactive_workspace #1e1e1e #1e1e1e #888888
-        urgent_workspace   #aa0000 #990000 #ffffff
-	}
-	font xft:Droid Sans Mono 8, FontAwesome 10
-	position top
-	status_command bumblebee-status -m brightness pasink nic bluetooth uptime battery datetime -p root.path=/ time.format="%H:%M CW %V" date.format="%A, %b %d %Y" -t solarized-powerline -p nic.exclude="enp1s0,lo"
-	# powerline	
-	tray_output none
-}
-
 #Program Launcher
-bindsym $mod+d exec rofi -show run -lines 10
+bindsym $mod+d exec rofi -modi drun run -show drun -lines 10 -font "Roboto Regular 8"
 #Rofi window switcher
 bindsym $mod+Shift+d exec rofi -show window -lines 10
 
@@ -171,6 +124,53 @@ bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
+
+#							BORDER				BACKGROUND		TEXT
+client.focused				#9b703f				#686666			#ffffff			#FF0000
+client.focused_inactive		#242424 			#000000			#A48E6D 		#FD9D0D
+client.unfocused			#242424 			#000000 		#A48E6D 		#FD9D0D
+client.urgent				#ff8000 			#ff4300 		#ff0000 		#900000
+
+#Gaps and Borders
+gaps inner 8
+gaps outer 0
+bindsym $mod+g mode "$mode_gaps"
+mode "$mode_gaps" {
+    bindsym $mod+j  gaps outer all plus 5
+    bindsym $mod+k gaps outer all minus 5
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+#Autostart
+exec --no-startup-id compton -f
+#exec xautolock -locker i3lock-fancy
+#exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd
+exec --no-startup-id redshift-gtk
+exec --no-startup-id caffeine
+exec --no-startup-id clipit
+exec --no-startup-id nitrogen --restore
+
+#Bar
+bar {
+    colors {
+        # Whole color settings
+        background #1e1e1e
+        statusline #ffffff
+        separator  #1e1e1e
+
+        # Type             border  background font
+        focused_workspace  #1e1e1e #1e1e1e #c90e0e
+        active_workspace   #1e1e1e #222222 #cf6a4c
+        inactive_workspace #1e1e1e #1e1e1e #888888
+        urgent_workspace   #aa0000 #990000 #ffffff
+	}
+	font xft:Droid Sans Mono 8, FontAwesome 10
+	position top
+	status_command bumblebee-status -m brightness pasink nic bluetooth uptime battery datetime -p root.path=/ time.format="%H:%M CW %V" date.format="%A, %b %d %Y" -t solarized-powerline -p nic.exclude="enp1s0,lo"
+	# powerline	
+	tray_output none
+}
 
 #Resize Window (you can also use the mouse for that)
 bindsym $mod+r mode "resize"
