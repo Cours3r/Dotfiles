@@ -1,6 +1,6 @@
 " My basic .vimrc
 set nocompatible
-" filetype plugin on
+
 syntax on
 set hidden
 set wildmenu
@@ -19,14 +19,16 @@ set tabstop=4
 set shiftwidth=4
 set noexpandtab
 set autoindent
-" autocmd FileType * set noexpandtab
+autocmd filetype * set noexpandtab
 
 " set termguicolors " Enable true color support.
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+" let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+" let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
-" set background=dark
-" colorscheme atom-dark-256
+let g:dracula_italic = 0
+let g:dracula_colorterm=0
 color dracula
+" highlight Normal ctermbg=NONE term=NONE
 
+let g:python_highlight_all = 1
 vnoremap <leader>p "_dP

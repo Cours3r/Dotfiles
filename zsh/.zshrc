@@ -10,7 +10,7 @@
 # ZSH_THEME="robbyrussell" # change to green?
 # ZSH_THEME="miloshadzic" # like the => & colors
 # ZSH_THEME="minimal" # like the >>
-ZSH_THEME="cours3r" 
+ZSH_THEME="dracula" 
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -103,3 +103,5 @@ alias sudo='sudo '
 alias s='sudo '
 alias pmi="pacman -S"
 alias pmr="pacman -Rnsc"
+alias pms="pacman -Ss"
+TERM="xterm-256color"
