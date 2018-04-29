@@ -1,0 +1,5 @@
+[user]
+	name = Cours3r
+	email = benjamin@stewart.tc
+[core]
+	editor = nvim

@@ -25,7 +25,7 @@ autocmd filetype * set noexpandtab
 " let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 " let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
-let g:dracula_italic = 0
+" let g:dracula_italic = 0
 let g:dracula_colorterm=0
 color dracula
 " highlight Normal ctermbg=NONE term=NONE
