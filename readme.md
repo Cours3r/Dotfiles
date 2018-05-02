@@ -1,6 +1,6 @@
 # Dotfiles
 
-This repository if my collection of dotfiles for running arch and openbox. The majority are copied from other users from r/unixporn and tweaked for my personal use. The goal is to learn and build my own files.
+This repository if my collection of dotfiles for running arch and openbox or i3-gaps. The majority are copied from other users from r/unixporn and tweaked for my personal use, with a few that I wrote myself.
 
 ### Included
 
@@ -34,13 +34,39 @@ zsh - my custom zsh prompt & .zshrc
 
 .             theme -> ~/.oh-my-zsh/custom/themes/
 
+X - Xresources config for dracula theme for rofi, urxvt and other applications
+
+-> location: .Xresources -> ~/.Xresources
+
+alacritty - config for alacritty, dracula colors
+
+-> location: alacritty.yml -> ~/.config/alacritty/
+
+git - my git config
+
+-> location: .gitconfig -> ~
+
+nvim - my neovim, heavily from keiththomps, with plugins, functions, and other helpful configurations
+
+-> location: init.vim -> ~/.config/nvim/
+
+st - config.h for st with alpha value set and dracula color schemes
+
+-> Apply scrollback, clipboard, and alpha patches, then build using custom config.h header
+
+tmux - tmux config, heavily from keiththomps. Most keybinds are vim + alt key
+
+-> location: .tmux.conf -> ~
+
 ### Bugs/Issues:
 
 * Lock screen image doesn't scale, on a larger monitor it will require a manual resize
+* nvim + tmux + dracula breaks italics fonts in all terminals, highlights everything instead.
 
 ### Acknowledgments
 
 * dlcgold - used his FullMetalArch config to get a starting point with openbox
-
+* keiththomps - used his tmux & nvim configs to start with
+* lukesmith - Great videos with nice setups and tutorials. Found lot's of awesome tools from his videos.
 
 
