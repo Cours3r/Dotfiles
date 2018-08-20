@@ -25,6 +25,8 @@ set $editor st
 font ttf:Hack 8
 #Floating Modifier
 floating_modifier $mod
+#i3dir
+set $i3dir          ~/.config/i3
 
 #pactl Audio controls
 bindsym	XF86AudioRaiseVolume	exec pactl set-sink-volume 0 +5%
@@ -40,15 +42,16 @@ bindsym XF86MonBrightnessUp 	exec xbacklight +10
 bindsym XF86MonBrightnessDown 	exec xbacklight -10
 
 #Keybinds
-bindsym $mod+t				      exec $editor -e tmux
+bindsym $mod+t						exec $editor -e tmux
 bindsym $mod+Shift+i				exec $editor
-bindsym $mod+b						exec qutebrowser
-bindsym $mod+Shift+b				exec firefox
+bindsym $mod+Shift+b				exec qutebrowser
+bindsym $mod+b						exec firefox
 bindsym $mod+e						exec $editor -e ranger
 bindsym $mod+shift+F2				exec thunar
 bindsym $mod+a						exec atom
 bindsym $mod+shift+x				exec ~/.xlock/lock2.sh
 bindsym Shift+XF86Eject				exec $editor -e scrot
+bindsym $mod+m						exec matlab -desktop
 bindsym Shift+F4 exec pkill bash
 #þKill Focused Window
 bindsym $mod+Shift+q kill
@@ -66,16 +69,16 @@ bindsym $mod+d exec rofi -modi drun run -show drun -lines 10 -font "Roboto Regul
 bindsym $mod+Shift+d exec rofi -show window -lines 10
 
 #Select Windows:
-bindsym $mod+h	 	focus left
-bindsym $mod+j	 	focus down
+bindsym $mod+h		focus left
+bindsym $mod+j		focus down
 bindsym $mod+k		focus up
-bindsym $mod+l	 	focus right
+bindsym $mod+l		focus right
 
 #Move Windows
-bindsym $mod+Shift+h	 	move left
-bindsym $mod+Shift+j	 	move down
-bindsym $mod+Shift+k 		move up
-bindsym $mod+Shift+l	 	move right
+bindsym $mod+Shift+h		move left
+bindsym $mod+Shift+j		move down
+bindsym $mod+Shift+k		move up
+bindsym $mod+Shift+l		move right
 
 #Split in Horizontal Orientation
 bindsym $mod+c split h
@@ -153,24 +156,28 @@ exec --no-startup-id nitrogen --restore
 
 #Bar
 bar {
-    colors {
-        # Whole color settings
-        background #1e1e1e
-        statusline #ffffff
-        separator  #1e1e1e
+	colors {
+		# Whole color settings
+		background #1e1e1e
+		statusline #ffffff
+		separator  #1e1e1e
 
-        # Type             border  background font
-        focused_workspace  #1e1e1e #1e1e1e #c90e0e
-        active_workspace   #1e1e1e #222222 #cf6a4c
-        inactive_workspace #1e1e1e #1e1e1e #888888
-        urgent_workspace   #aa0000 #990000 #ffffff
+		# Type             border  background font
+		focused_workspace  #1e1e1e #1e1e1e #c90e0e
+		active_workspace   #1e1e1e #222222 #cf6a4c
+		inactive_workspace #1e1e1e #1e1e1e #888888
+		urgent_workspace   #aa0000 #990000 #ffffff
 	}
-	font xft:Droid Sans Mono 8, FontAwesome 10
+	status_command bumblebee-status -m brightness pasink nic bluetooth uptime battery datetime -p root.path=/ time.format="%H:%M CW %V" date.format="%A, %b %d %Y" -t gruvbox-powerline -p nic.exclude="enp1s0,lo"
+	font xft:Hack 8, FontAwesome 8
 	position top
-	status_command bumblebee-status -m brightness pasink nic bluetooth uptime battery datetime -p root.path=/ time.format="%H:%M CW %V" date.format="%A, %b %d %Y" -t solarized-powerline -p nic.exclude="enp1s0,lo"
-	# powerline
 	tray_output none
 }
+
+# Launch bar
+#exec_always --no-startup-id $HOME/.config/polybar/config
+
+# status_command bumblebee-status -m brightness pasink nic bluetooth uptime battery datetime -p root.path=/ time.format="%H:%M CW %V" date.format="%A, %b %d %Y" -t solarized-powerline -p nic.exclude="enp1s0,lo"
 
 #Resize Window (you can also use the mouse for that)
 bindsym $mod+r mode "resize"
