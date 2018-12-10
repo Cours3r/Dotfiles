@@ -1,132 +1,144 @@
-#Colors
-#set_from_resource $darkred     color1  #000000
-#et_from_resource  $red         color9  #000000
-#set_from_resource $darkgreen   color2  #000000
-#set_from_resource $green       color10 #000000
-#set_from_resource $darkyellow  color3  #000000
-#set_from_resource $yellow      color11 #000000
-#set_from_resource $darkblue    color4  #000000
-#set_from_resource $blue        color12 #000000
-#set_from_resource $darkmagenta color5  #000000
-#set_from_resource $magenta     color13 #000000
-#set_from_resource $darkcyan    color6  #000000
-#set_from_resource $cyan        color14 #000000
-#set_from_resource $darkwhite   color7  #000000
-#set_from_resource $white       color15 #000000
-#set $black        #282828
-#set $darkblack    #1d2021
-#set $transparent  #00000000
+# vim: filetype=i3
+#  ___  ________
+# |\  \|\_____  \
+# \ \  \|____|\ /_
+#  \ \  \    \|\  \
+#   \ \  \  __\_\  \
+#    \ \__\|\_______\
+#     \|__|\|_______|
 
-#Default Modifier
-set $mod Mod4
-#Default Terminal Emulator
-set $editor st
-#Font
-font ttf:Hack 8
-#Floating Modifier
-floating_modifier $mod
-#i3dir
-set $i3dir          ~/.config/i3
+# wm
 
-#pactl Audio controls
-bindsym	XF86AudioRaiseVolume	exec pactl set-sink-volume 0 +5%
-bindsym	XF86AudioLowerVolume	exec pactl set-sink-volume 0 -5%
-bindsym	XF86AudioMute			exec --no-startup-id pactl set-sink-mute 0 toggle; exec pactl set-sink-volume 0 20%
+set $mod Mod4 						#Default Modifier
+set $editor st						#Default Terminal Emulator
+set $font pango: tewi				#Default Font
+font $font							#Font
+floating_modifier $mod				#Floating Modifier
+set $i3dir ~/.config/i3				#i3dir
 
-bindsym XF86AudioPlay			exec --no-startup-id playerctl play-pause
-bindsym XF86AudioNext			exec --no-startup-id playerctl next
-bindsym XF86AudioPrev			exec --no-startup-id playerctl previous
+# binds
 
-# Sreen brightness controls
-bindsym XF86MonBrightnessUp 	exec xbacklight +10
-bindsym XF86MonBrightnessDown 	exec xbacklight -10
+# focus
+bindsym $mod+h						focus left
+bindsym $mod+j						focus down
+bindsym $mod+k						focus up
+bindsym $mod+l						focus right
 
-#Keybinds
+# move
+bindsym $mod+Shift+h				move left
+bindsym $mod+Shift+j				move down
+bindsym $mod+Shift+k				move up
+bindsym $mod+Shift+l				move right
+
+# splits
+bindsym $mod+c split h
+bindsym $mod+v split v
+
+# launch
 bindsym $mod+t						exec $editor -e tmux
-bindsym $mod+Shift+i				exec $editor
-bindsym $mod+Shift+b				exec qutebrowser
+bindsym $mod+Shift+t				exec $editor
 bindsym $mod+b						exec firefox
+bindsym $mod+Shift+b				exec qutebrowser
 bindsym $mod+e						exec $editor -e ranger
-bindsym $mod+shift+F2				exec thunar
+bindsym $mod+shift+e				exec thunar
 bindsym $mod+a						exec atom
 bindsym $mod+shift+x				exec ~/.xlock/lock2.sh
 bindsym Shift+XF86Eject				exec $editor -e scrot
 bindsym $mod+m						exec matlab -desktop
-bindsym Shift+F4 exec pkill bash
-#�Kill Focused Window
-bindsym $mod+Shift+q kill
+bindsym $mod+Shift+q 				kill
+bindsym Shift+F4 					exec pkill bash
 
-#Reload the Configuration File
-bindsym $mod+Shift+c reload
-#Restart i3 Inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-#Exit i3 (logs you out of your X session)
-bindsym $mod+0 exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+# media
+bindsym	XF86AudioRaiseVolume		exec pactl set-sink-volume 0 +5%
+bindsym	XF86AudioLowerVolume		exec pactl set-sink-volume 0 -5%
+bindsym	XF86AudioMute				exec --no-startup-id pactl set-sink-mute 0 toggle; exec pactl set-sink-volume 0 20%
+bindsym XF86AudioPlay				exec --no-startup-id playerctl play-pause
+bindsym XF86AudioNext				exec --no-startup-id playerctl next
+bindsym XF86AudioPrev				exec --no-startup-id playerctl previous
 
-#Program Launcher
-bindsym $mod+d exec rofi -modi drun run -show drun -lines 10 -font "Roboto Regular 8"
-#Rofi window switcher
-bindsym $mod+Shift+d exec rofi -show window -lines 10
+# brightness
+bindsym XF86MonBrightnessUp 		exec xbacklight +10
+bindsym XF86MonBrightnessDown 		exec xbacklight -10
 
-#Select Windows:
-bindsym $mod+h		focus left
-bindsym $mod+j		focus down
-bindsym $mod+k		focus up
-bindsym $mod+l		focus right
+# session
+bindsym $mod+Shift+c 				reload
+bindsym $mod+Shift+r 				restart
+bindsym $mod+0 exec "i3-nagbar -t warning -m 'Exit?' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+d exec rofi -modi drun run -show drun -lines 10 -font $font #drun launcher
+bindsym $mod+Shift+d exec rofi -show window -lines 10	#rofi program switcher
 
-#Move Windows
-bindsym $mod+Shift+h		move left
-bindsym $mod+Shift+j		move down
-bindsym $mod+Shift+k		move up
-bindsym $mod+Shift+l		move right
+# layout
+bindsym $mod+s 						layout stacking
+bindsym $mod+w 						layout tabbed
+bindsym $mod+x 						layout toggle split
+bindsym $mod+f 						fullscreen toggle
+bindsym $mod+Shift+space 			floating toggle 	#toggle float/tiling
+bindsym $mod+space 					focus mode_toggle	#switch between float/tiling windows
+bindsym $mod+u 						focus parent 		#focus parent
+bindsym $mod+i 						focus child 		#focus child
 
-#Split in Horizontal Orientation
-bindsym $mod+c split h
+# resize
+bindsym $mod+r 						mode "resize"
+mode "resize" {
+        # resize windows
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
-#Split in Vertical Orientation
-bindsym $mod+v split v
+        # arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
 
-#Enter Fullscreen Mode for the Focused Container
-bindsym $mod+f fullscreen toggle
+        # exit
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
 
-#Change Container Layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+x layout toggle split
+# new window
+new_window pixel 2
+for_window [window_role="pop-up"] floating enablt
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+for_window [class="(?i)VirtualBox" title="(?i)Manager"] floating enable
+for_window [class="(?i)VirtualBox"] floating enable
+for_window [class="(?i)blueman"] floating enable
+for_window [class="(?i)lxappearance"] floating enable
+for_window [class="(?i)pavucontrol"] floating enable
+for_window [class="(?i)nm-connection-editor"] floating enable
+for_window [class="(?i)gnome-system-monitor"] floating enable
+for_window [class="(?i)Beancash-qt"] floating enable
+for_window [class="(?i)nitrogen"] floating enable
 
-#Toggle Tiling / Floating
-bindsym $mod+Shift+space floating toggle
+# workspaces
 
-#Change Focus Between Tiling / Floating Windows
-bindsym $mod+space focus mode_toggle
+# spaces
+set $w1 "O # # # #"
+set $w2 "# O # # #"
+set $w3 "# # O # #"
+set $w4 "# # # O #"
+set $w5 "# # # # O"
 
-#Focus the Parent Container
-bindsym $mod+u focus parent
+# goto
+bindsym $mod+1 workspace $w1
+bindsym $mod+2 workspace $w2
+bindsym $mod+3 workspace $w3
+bindsym $mod+4 workspace $w4
+bindsym $mod+5 workspace $w5
 
-#Focus the Child Container
-bindsym $mod+i focus child
+# move to
+bindsym $mod+Shift+1 move container to $w1
+bindsym $mod+Shift+2 move container to $w2
+bindsym $mod+Shift+3 move container to $w3
+bindsym $mod+Shift+4 move container to $w4
+bindsym $mod+Shift+5 move container to $w5
 
-#Switch to Workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-
-#Move Focused Container to Workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
+# colors
 
 #							BORDER				BACKGROUND		TEXT
 client.focused				#9b703f				#686666			#ffffff			#FF0000
@@ -134,9 +146,30 @@ client.focused_inactive		#242424 			#000000			#A48E6D 		#FD9D0D
 client.unfocused			#242424 			#000000 		#A48E6D 		#FD9D0D
 client.urgent				#ff8000 			#ff4300 		#ff0000 		#900000
 
-#Gaps and Borders
+#####	buyBread color i3i3i3 	#####
+
+## active
+#set $activeBorder     "#739491"
+#set $active           "#739491"
+#set $activeText       "#0a090a"
+
+## inactive
+#set $inactiveBorder   "#71807e"
+#set $inactive         "#71807e"
+#set $inactiveText     "#282428"
+
+## class           border            background   text            indicator   child_border
+#client.focused    $activeBorder     $active      $activeText     $active     $active
+#client.unfocused  $inactiveBorder   $inactive    $inactiveText   $inactive   $inactive
+
+#####################################
+
+# gaps
+
 gaps inner 8
 gaps outer 0
+
+# gap controls
 bindsym $mod+g mode "$mode_gaps"
 mode "$mode_gaps" {
     bindsym $mod+j  gaps outer all plus 5
@@ -145,16 +178,14 @@ mode "$mode_gaps" {
     bindsym Escape mode "default"
 }
 
-#Autostart
+# autostart
+
 exec --no-startup-id compton -f
-#exec xautolock -locker i3lock-fancy
-#exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd
-exec --no-startup-id redshift-gtk
-exec --no-startup-id caffeine
 exec --no-startup-id clipit
 exec --no-startup-id nitrogen --restore
 
-#Bar
+# bar
+
 bar {
 	colors {
 		# Whole color settings
@@ -174,49 +205,5 @@ bar {
 	tray_output none
 }
 
-# Launch bar
+# polybar
 #exec_always --no-startup-id $HOME/.config/polybar/config
-
-# status_command bumblebee-status -m brightness pasink nic bluetooth uptime battery datetime -p root.path=/ time.format="%H:%M CW %V" date.format="%A, %b %d %Y" -t solarized-powerline -p nic.exclude="enp1s0,lo"
-
-#Resize Window (you can also use the mouse for that)
-bindsym $mod+r mode "resize"
-mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
-new_window pixel 2
-for_window [window_role="pop-up"] floating enablt
-for_window [window_role="bubble"] floating enable
-for_window [window_role="task_dialog"] floating enable
-for_window [window_role="Preferences"] floating enable
-for_window [window_type="dialog"] floating enable
-for_window [window_type="menu"] floating enable
-for_window [class="(?i)VirtualBox" title="(?i)Manager"] floating enable
-for_window [class="(?i)VirtualBox"] floating enable
-for_window [class="(?i)blueman"] floating enable
-for_window [class="(?i)lxappearance"] floating enable
-for_window [class="(?i)pavucontrol"] floating enable
-for_window [class="(?i)nm-connection-editor"] floating enable
-for_window [class="(?i)gnome-system-monitor"] floating enable
-for_window [class="(?i)Beancash-qt"] floating enable
-for_window [class="(?i)nitrogen"] floating enable
