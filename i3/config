@@ -1,5 +1,4 @@
-# vim: filetype=i3
-#  ___  ________
+# ___  ________
 # |\  \|\_____  \
 # \ \  \|____|\ /_
 #  \ \  \    \|\  \
@@ -9,44 +8,48 @@
 
 # wm
 
-set $mod Mod4 						#Default Modifier
-set $editor st						#Default Terminal Emulator
-set $font pango: tewi				#Default Font
-font $font							#Font
-floating_modifier $mod				#Floating Modifier
-set $i3dir ~/.config/i3				#i3dir
+set $mod Mod4
+set $editor st
+set $font pango:dina
+font $font
+floating_modifier $mod
+set $i3dir ~/.config/i3
 
 # binds
 
 # focus
-bindsym $mod+h						focus left
-bindsym $mod+j						focus down
-bindsym $mod+k						focus up
-bindsym $mod+l						focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # move
-bindsym $mod+Shift+h				move left
-bindsym $mod+Shift+j				move down
-bindsym $mod+Shift+k				move up
-bindsym $mod+Shift+l				move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # splits
 bindsym $mod+c split h
 bindsym $mod+v split v
 
 # launch
-bindsym $mod+t						exec $editor -e tmux
-bindsym $mod+Shift+t				exec $editor
-bindsym $mod+b						exec firefox
-bindsym $mod+Shift+b				exec qutebrowser
-bindsym $mod+e						exec $editor -e ranger
-bindsym $mod+shift+e				exec thunar
+bindsym $mod+t						exec $editor
+bindsym $mod+Shift+t				exec $editor -e tmux
+bindsym $mod+y						exec $editor -c scratch
+bindsym $mod+b						exec google-chrome-stable
+bindsym $mod+Shift+b				exec firefox
+bindsym $mod+e						exec $editor -e lf
+bindsym $mod+shift+e				exec $editor -e ranger
 bindsym $mod+a						exec atom
-bindsym $mod+shift+x				exec ~/.xlock/lock2.sh
 bindsym Shift+XF86Eject				exec $editor -e scrot
-bindsym $mod+m						exec matlab -desktop
-bindsym $mod+Shift+q 				kill
-bindsym Shift+F4 					exec pkill bash
+bindsym $mod+n						exec matlab -desktop
+
+# control
+bindsym $mod+Shift+q				kill
+bindsym Shift+F4					exec pkill bash
+bindsym $mod+p						exec --no-startup-id maim -su ~/Pictures/Screenshots/snip-"$(date '+%m-%d-%Y').jpg"
+bindsym $mod+shift+p				exec --no-startup-id maim -u ~/Pictures/Screenshots/full-"$(date '+%m-%d-%Y').jpg"
 
 # media
 bindsym	XF86AudioRaiseVolume		exec pactl set-sink-volume 0 +5%
@@ -63,39 +66,90 @@ bindsym XF86MonBrightnessDown 		exec xbacklight -10
 # session
 bindsym $mod+Shift+c 				reload
 bindsym $mod+Shift+r 				restart
-bindsym $mod+0 exec "i3-nagbar -t warning -m 'Exit?' -b 'Yes, exit i3' 'i3-msg exit'"
-bindsym $mod+d exec rofi -modi drun run -show drun -lines 10 -font $font #drun launcher
-bindsym $mod+Shift+d exec rofi -show window -lines 10	#rofi program switcher
+bindsym $mod+0 						exec "i3-nagbar -t warning -m 'Exit?' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+BackSpace 		exec --no-startup-id prompt "Exit i3?" "i3-msg exit"
+bindsym $mod+d 						exec --no-startup-id dmenu_run
+bindsym $mod+Shift+d 				exec rofi -show window -lines 10	#rofi program switcher
+bindsym $mod+shift+x				exec ~/.config/locker/lock2.sh
 
 # layout
 bindsym $mod+s 						layout stacking
 bindsym $mod+w 						layout tabbed
 bindsym $mod+x 						layout toggle split
 bindsym $mod+f 						fullscreen toggle
-bindsym $mod+Shift+space 			floating toggle 	#toggle float/tiling
-bindsym $mod+space 					focus mode_toggle	#switch between float/tiling windows
+
+#toggle float/tiling
+bindsym $mod+Shift+space 			floating toggle
+
+#switch between float/tiling windows
+bindsym $mod+space 					focus mode_toggle
 bindsym $mod+u 						focus parent 		#focus parent
 bindsym $mod+i 						focus child 		#focus child
 
 # resize
-bindsym $mod+r 						mode "resize"
+bindsym $mod+r mode "resize"
 mode "resize" {
-        # resize windows
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+	# resize windows
+	bindsym h	resize shrink width 20 px
+	bindsym j	resize grow height 20 px
+	bindsym k	resize shrink height 20 px
+	bindsym l	resize grow width 20 px
 
-        # arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+	# arrow keys
+	bindsym Left resize shrink width 10 px or 10 ppt
+	bindsym Down resize grow height 10 px or 10 ppt
+	bindsym Up resize shrink height 10 px or 10 ppt
+	bindsym Right resize grow width 10 px or 10 ppt
 
-        # exit
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+	# jump modes
+	bindsym $mod+m mode "move"
+
+	# exit
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
 }
+
+# move
+bindsym $mod+m mode "move"
+mode "move" {
+	# vim keys
+	bindsym k move up 20px
+	bindsym j move down 20px
+	bindsym h move left 20px
+	bindsym l move right 20px
+
+	bindsym Shift+k move up 200px
+	bindsym Shift+j move down 200px
+	bindsym Shift+h move left 200px
+	bindsym Shift+l move right 200px
+
+	# arrow keys
+	bindsym Up move up 20px
+	bindsym Down move down 20px
+	bindsym Left move left 20px
+	bindsym Right move right 20px
+
+	# jump modes
+	bindsym $mod+r mode "resize"
+
+	# exit
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+
+# gaps
+gaps inner 8
+gaps outer 0
+
+# gap controls
+bindsym $mod+g mode "$mode_gaps"
+mode "$mode_gaps" {
+	bindsym $mod+j  gaps outer all plus 5
+	bindsym $mod+k gaps outer all minus 5
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+
 
 # new window
 new_window pixel 2
@@ -114,15 +168,18 @@ for_window [class="(?i)nm-connection-editor"] floating enable
 for_window [class="(?i)gnome-system-monitor"] floating enable
 for_window [class="(?i)Beancash-qt"] floating enable
 for_window [class="(?i)nitrogen"] floating enable
+for_window [class="scratch"] floating enable
+# Matlab figure floating by default hack
+for_window [title="Figure*"] floating enable
 
 # workspaces
 
 # spaces
-set $w1 "O # # # #"
-set $w2 "# O # # #"
-set $w3 "# # O # #"
-set $w4 "# # # O #"
-set $w5 "# # # # O"
+set $w1 1
+set $w2 2
+set $w3 3
+set $w4 4
+set $w5 5
 
 # goto
 bindsym $mod+1 workspace $w1
@@ -132,11 +189,11 @@ bindsym $mod+4 workspace $w4
 bindsym $mod+5 workspace $w5
 
 # move to
-bindsym $mod+Shift+1 move container to $w1
-bindsym $mod+Shift+2 move container to $w2
-bindsym $mod+Shift+3 move container to $w3
-bindsym $mod+Shift+4 move container to $w4
-bindsym $mod+Shift+5 move container to $w5
+bindsym $mod+Shift+1 move container to workspace $w1
+bindsym $mod+Shift+2 move container to workspace $w2
+bindsym $mod+Shift+3 move container to workspace $w3
+bindsym $mod+Shift+4 move container to workspace $w4
+bindsym $mod+Shift+5 move container to workspace $w5
 
 # colors
 
@@ -164,46 +221,33 @@ client.urgent				#ff8000 			#ff4300 		#ff0000 		#900000
 
 #####################################
 
-# gaps
-
-gaps inner 8
-gaps outer 0
-
-# gap controls
-bindsym $mod+g mode "$mode_gaps"
-mode "$mode_gaps" {
-    bindsym $mod+j  gaps outer all plus 5
-    bindsym $mod+k gaps outer all minus 5
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-
 # autostart
 
 exec --no-startup-id compton -f
 exec --no-startup-id clipit
-exec --no-startup-id nitrogen --restore
+exec --no-startup-id pulseaudio
+exec --no-startup-id feh --bg-fill ~/.config/wall.png
+exec --no-startup-id xrandr --output DP-2 --left-of HDMI-0 --auto
 
 # bar
 
 bar {
 	colors {
-		# Whole color settings
-		background #1e1e1e
-		statusline #ffffff
-		separator  #1e1e1e
+# Whole color settings
+		background #282A36
+			statusline #ffffff
+			separator  #1e1e1e
 
-		# Type             border  background font
-		focused_workspace  #1e1e1e #1e1e1e #c90e0e
-		active_workspace   #1e1e1e #222222 #cf6a4c
-		inactive_workspace #1e1e1e #1e1e1e #888888
-		urgent_workspace   #aa0000 #990000 #ffffff
+# Type             border  background font
+			focused_workspace  #282A36 #282A36 #e3e3e3
+			active_workspace   #282A36 #222222 #e3e3e3
+			inactive_workspace #282A36 #1e1e1e #ffffff
+			urgent_workspace   #aa0000 #990000 #ffffff
 	}
-	status_command bumblebee-status -m brightness pasink nic bluetooth uptime battery datetime -p root.path=/ time.format="%H:%M CW %V" date.format="%A, %b %d %Y" -t gruvbox-powerline -p nic.exclude="enp1s0,lo"
-	font xft:Hack 8, FontAwesome 8
-	position top
-	tray_output none
+	status_command bumblebee-status -m pasink nic uptime datetime -p root.path=/ time.format="%H:%M CW %V" date.format="%A, %b %d %Y" -t gruvbox-powerline -p nic.exclude="enp1s0,lo"
+		font xft:Hack 8, FontAwesome 8
+		position top
+		mode dock
+		modifier None
 }
 
-# polybar
-#exec_always --no-startup-id $HOME/.config/polybar/config

@@ -108,28 +108,19 @@ static const char *colorname[] = {
 	[15] = "#ffffff", /* white   */
 
 	/* special colors */
-	[256] = "#282a36", /* background */
-	[257] = "#f8f8f2", /* foreground */
+	[256] = "#f8f8f2", /* foreground */
+	[257] = "#282a36", /* background */
 };
 
 
 /*
  * Default colors (colorname index)
- * foreground, background, cursor
+ * foreground, background, cursor, reverse cursor
  */
-unsigned int defaultfg = 257;
-unsigned int defaultbg = 256;
-unsigned int defaultcs = 257;
-unsigned int defaultrcs = 257;
-
-/*
- * Colors used, when the specific fg == defaultfg. So in reverse mode this
- * will reverse too. Another logic would only make the simple feature too
- * complex.
- */
-
-unsigned int defaultitalic = 7;
-unsigned int defaultunderline = 7;
+unsigned int defaultfg = 7;
+unsigned int defaultbg = 257;
+static unsigned int defaultcs = 256;
+static unsigned int defaultrcs = 257;
 
 /*
  * Default shape of cursor
@@ -187,9 +178,6 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_V,           clippaste,      {.i =  0} },
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
-	{ TERMMOD,              XK_I,           iso14755,       {.i =  0} },
-	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
-	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
 };
 
 /*
